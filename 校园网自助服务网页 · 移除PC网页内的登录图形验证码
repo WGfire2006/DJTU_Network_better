@@ -1,0 +1,55 @@
+// ==UserScript==
+// @name         校园网自助 · 移除PC网页内的登录图形验证码
+// @author       WGfire
+// @namespace    local.campus.selfservice
+// @version      2.0.0
+// @description  静默移除校园网自助服务系统登录页的图形验证码；账号密码仍由你手动输入
+// @match        http://10.1.1.200:8080/*
+// @run-at       document-start
+// @grant        none
+// @icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJMAAACOCAYAAAA1rTpQAAASbUlEQVR42u2d95MVRReG/WexMCAYwRwwoGLOERVUUIIJFEyYcxZFLSOIOWCO1V89Xd+71U7NnbnT3dP3zuz54dQuu+zcnpm3T3zP6UOcc4eYmOQQewgmBiYTA5OJgcnExMBkYmAyMTCZGJhMTAxMJgYmEwOTiYmBycTAZGJgGo/8+OOPzp6DgalR/v33X/fnn3+633//3X355Zdu//797pVXXnGXX365O+mkk9wpp5zijj/+eHf44Ye7Bx980JVc03fffefX8+mnn3r57LPP3L59+9xXX33l/vnnH2dgmqEcPHjQHThwwH388cdu9+7d7qGHHnK33HKLu+yyy9xFF13kVq5c6Y444gh31FFHudWrV7sLLrjArVmzxn9du3atBxV/08fafvrpJ/fJJ5+4Bx54wN10003ukksucaeeeqpbvny5O/LII92yZcu8HHbYYe7hhx82MJWWX3/91b3zzjv+4W/bts1df/31HhznnHOOO/30090ZZ5zhzjrrLHf22Wf7n1144YXu4osv9gJ4EH6G6HsAtX79+qwv8tFHH3VXX321X8dpp53mgcz3gBiQsx7AhXbcu3evMzNXSH7++WdvDk4++eQFoJx55pn++3PPPdfL+eef70UaJxQBpwom/m7VqlX+Z2i3HGv94IMP3LHHHrsAHtZU/XyEn6Mt+f/mMxUQfAx8GpkGgBJqlRgRiPCbzjvvPPf888+7XIDftGmTO+644/zn1IFaP0OToq3eeOMNZw54IYd1y5Yt7oQTTvAvX2aqK5DC/89LRLuhNXbt2uXwaXKs9bfffnPXXXed98/0mVUwaROwBoKA1157zVk0V0juuusu/9CljWI1kQTthtnZsWNHNpOG4DRfeumlXtOE66wzrWwKwPzqq686Sw0UEqKyE088ccHfiAUTji5+1dFHH+02bNiQFUTSnjfffLMHPZ81STNKU+FLkaKwPFMheeyxx3x01dWkhaDjxQEiXjK5pdwgktxzzz3+MyatiXUgaCR8qT179jhLWhYSwn38DgEjBkyYMkwauSZSCH2tlWvjxKM9m9aEj0TK4s033xx8tn1QQCJMnxRKt5kzXhpAvPLKK71PggnqMzi48cYbvfZrAzi+1Ouvvz6Kss0gFvnUU095IAGIGPNGzumY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
+// ==/UserScript==
+/*
+ * 保留不动的元素：#verifyMsg、#verifyError、#verifyDiv
+ *   （login_self.js 里有代码按 id 读取它们，删除会报错，所以只隐藏/改属性）
+ */
+
+(function () {
+  'use strict';
+
+  // 立即隐藏，避免验证码闪现（按 id 选择，这样去掉 name 后依然保持隐藏）
+  var CSS = '#verifyDiv,#verify,#verify_text,#identity{display:none !important;}';
+
+  function injectStyle() {
+    if (document.getElementById('rj-nocaptcha-style')) return true;
+    var host = document.head || document.documentElement;
+    if (!host) return false;
+    var s = document.createElement('style');
+    s.id = 'rj-nocaptcha-style';
+    s.textContent = CSS;
+    host.appendChild(s);
+    return true;
+  }
+
+  function killCaptcha() {
+    var v = document.getElementById('verify');
+    if (v) v.removeAttribute('name'); // 关键：去掉 name，表单提交就不会带 verify 参数
+
+    var anchor = document.getElementById('identity') || v;
+    var tr = anchor && anchor.closest ? anchor.closest('tr') : null;
+    if (tr) tr.style.display = 'none'; // 整行一起隐藏，不留空白
+  }
+
+  if (!injectStyle()) {
+    var mo = new MutationObserver(function () {
+      if (injectStyle()) mo.disconnect();
+    });
+    mo.observe(document.documentElement || document, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', killCaptcha, { once: true });
+  } else {
+    killCaptcha();
+  }
+})();
